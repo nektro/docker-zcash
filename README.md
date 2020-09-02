@@ -9,6 +9,8 @@ Dockerized Zcash Daemon
 
 https://z.cash/
 
+https://github.com/zcash/zcash/releases
+
 | Key | Value |
 |-----|-------|
 | Version | `3.1.0` |
