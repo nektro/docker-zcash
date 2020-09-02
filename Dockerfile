@@ -23,8 +23,9 @@ RUN echo '#!/usr/bin/env bash' > ${entry}
 RUN echo 'set -e' >> ${entry}
 RUN echo '/app/zcash-fetch-params' >> ${entry}
 RUN echo 'touch /data/zcash.conf' >> ${entry}
-RUN echo '/app/zcashd -datadir=/data -printtoconsole -server -rpcport=8232 -rpcuser=zcash -rpcpassword=password' >> ${entry}
+RUN echo '/app/zcashd -datadir=/data -printtoconsole -server -rpcbind=0.0.0.0 -rpcallowip=127.0.0.1 -rpcport=8232 -rpcuser=zcash -rpcpassword=password -prune=$PRUNE' >> ${entry}
 RUN chmod +x ${entry}
+ENV PRUNE 10000
 VOLUME /data
 EXPOSE 8232
 ENTRYPOINT [ "/app/entrypoint.sh" ]
